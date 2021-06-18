@@ -1,6 +1,3 @@
-from typing import Sized
-
-
 class Rectangle:
   def __init__(self, width, height):
     self.width = width
@@ -13,7 +10,6 @@ class Rectangle:
     output = self.__class__.__name__ + f"(width={width}, height={height})"
     return output
     
-
   def set_height(self, height):
     self.height = height
     return height
@@ -42,9 +38,23 @@ class Rectangle:
 
     diagonal = (width ** 2 + height ** 2) ** .5
     return diagonal
+  
+  def get_amount_inside(self, shape):
+    return(self.width//shape.width * self.height//shape.height)
 
+  def get_picture(self):
+    picture = ""
+    if self.width > 50:
+      return "Too big for picture."
+      exit
+    if self.height > 50:
+      return "Too big for picture."
+      exit
 
-
+    for lines in range(self.height):
+      line = "*" * self.width + "\n"
+      picture += str(line)
+    return picture
 class Square(Rectangle):
   def __init__(self, side):
     super().__init__(width=side, height=side)
@@ -60,21 +70,26 @@ class Square(Rectangle):
     self.side = side
     super().__init__(width=side, height=side)
     
-  
   def set_width(self, side):
-      return super().set_width(width=side)
+    self.side = side
+    super().set_width(width=side)
   
   def set_height(self, side):
-      return super().set_height(height=side)
+    self.side = side
+    super().set_height(height=side)
 
-rect = Rectangle(10, 5)
-print(rect.get_area())
-rect.set_height(3)
-print(rect.get_perimeter())
-print(rect)
+# rect = Rectangle(10, 5)
+# print(rect.get_area())
+# rect.set_height(3)
+# print(rect.get_perimeter())
+# print(rect)
 
-sq = Square(9)
-print(sq.get_area())
-sq.set_side(4)
-print(sq.get_diagonal())
-print(sq)
+# sq = Square(9)
+# print(sq.get_area())
+# sq.set_side(4)
+# print(sq.get_diagonal())
+# print(sq)
+
+# rect.set_height(8)
+# rect.set_width(16)
+# print(rect.get_amount_inside(sq))
